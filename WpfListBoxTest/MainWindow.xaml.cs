@@ -65,5 +65,16 @@ namespace WpfListBoxTest
         {
 
         }
+
+        private void CommandBinding_AddNewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            myVM.ItsSource.Add(new SampleClass
+            {
+                First = NewFirst.Text,
+                Second = NewSecond.Text,
+                Third = NewThird.SelectedItem.ToString(),
+                Fouth = NewFouth.SelectedItem.ToString()
+            });
+        }
     }
 }
