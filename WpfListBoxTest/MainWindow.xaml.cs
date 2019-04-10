@@ -53,7 +53,12 @@ namespace WpfListBoxTest
 
         private void CommandBinding_DeleteExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
+            if (sender.GetType()==typeof(Button))
+            {
+                Button delButton = sender as Button;
+                SampleClass delItem = delButton.DataContext as SampleClass;
+                myVM.ItsSource.Remove(delItem);
+            }
         }
 
         private void CommandBinding_DeleteCanExecute(object sender, CanExecuteRoutedEventArgs e)

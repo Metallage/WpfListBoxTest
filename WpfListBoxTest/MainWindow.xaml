@@ -22,6 +22,7 @@
         </Grid.ColumnDefinitions>
        
         <ListView Grid.Column="0" ItemsSource="{Binding Path=ItsSource}"  >
+
             <ListView.Resources>
                 <ControlTemplate TargetType="{x:Type ListViewItem}" x:Key="Unselected">
                     <Border BorderThickness="1"
@@ -47,6 +48,7 @@
                 </ControlTemplate>
 
                 <ControlTemplate TargetType="{x:Type ListViewItem}" x:Key="Selected">
+                   
                     <Border BorderThickness="1"
                             BorderBrush="Black"
                             Background="GhostWhite">
@@ -64,7 +66,11 @@
                             <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Path=Second}"/>
                             <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Source={StaticResource Thirds}}" SelectedItem="{Binding Path=Third}"/>
                             <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Source={StaticResource Fouths}}" SelectedItem="{Binding Path=Fouth}"/>
-                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL" Command="ApplicationCommands.Delete"/>
+                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL" Command="ApplicationCommands.Delete">
+                                <Button.CommandBindings>
+                                    <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteExecuted" />
+                                </Button.CommandBindings>
+                            </Button>
                         </Grid>
                     </Border>
                 </ControlTemplate>
