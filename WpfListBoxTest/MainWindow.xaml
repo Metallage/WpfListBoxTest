@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteExecuted" />
+    </Window.CommandBindings>
+    <Window.Resources>
+        <CollectionViewSource x:Key="Thirds" Source="{Binding Path=Thirds}"/>
+        <CollectionViewSource x:Key="Fouths" Source="{Binding Path=Fouths}"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -33,7 +41,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Path=Second}"/>
                             <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=Third}"/>
                             <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=Fouth}"/>
-                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL"/>
+                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL" Command="ApplicationCommands.Delete"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -54,9 +62,9 @@
                             </Grid.RowDefinitions>
                             <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding Path=First}" />
                             <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Path=Second}"/>
-                            <ComboBox Grid.Column="1" Grid.Row="0"/>
-                            <ComboBox Grid.Column="1" Grid.Row="1"/>
-                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL"/>
+                            <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Source={StaticResource Thirds}}" SelectedItem="{Binding Path=Third}"/>
+                            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Source={StaticResource Fouths}}" SelectedItem="{Binding Path=Fouth}"/>
+                            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="DEL" Command="ApplicationCommands.Delete"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

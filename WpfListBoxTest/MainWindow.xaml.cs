@@ -24,6 +24,8 @@ namespace WpfListBoxTest
 
         public MainWindow()
         {
+
+            //AddSomeData();
             InitializeComponent();
             DataContext = myVM;
         }
@@ -39,12 +41,24 @@ namespace WpfListBoxTest
                     Third = $"Third name {i}",
                     Fouth = $"Fouth name {i}"
                 });
+                myVM.Thirds.Add($"Third name {i}");
+                myVM.Fouths.Add($"Fouth name {i}");
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AddSomeData();
+        }
+
+        private void CommandBinding_DeleteExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBinding_DeleteCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,9 @@ namespace WpfListBoxTest
     {
         private ObservableCollection<SampleClass> itsSource = new ObservableCollection<SampleClass>();
 
+        private ObservableCollection<string> thirds = new ObservableCollection<string>();
+
+        private ObservableCollection<string> fouths = new ObservableCollection<string>();
 
         public ObservableCollection<SampleClass> ItsSource
         {
@@ -28,6 +31,39 @@ namespace WpfListBoxTest
             }
         }
 
+        public ObservableCollection<string> Thirds
+        {
+            get
+            {
+                return thirds;
+            }
+            set
+            {
+                if (value != thirds)
+                {
+                    thirds = value;
+                    OnPropertyCahnged(this, "Thirds");
+                }
+            }
+        }
+
+
+
+        public ObservableCollection<string> Fouths
+        {
+            get
+            {
+                return fouths;
+            }
+            set
+            {
+                if (value != fouths)
+                {
+                    fouths = value;
+                    OnPropertyCahnged(this, "Fouths");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyCahnged(object sender, string propertyName)
